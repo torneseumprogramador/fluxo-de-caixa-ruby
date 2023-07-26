@@ -1,5 +1,6 @@
 class ApiController < ApplicationController
     skip_before_action :verify_authenticity_token
+    before_action :set_cors_headers
 
     def index
         extrato = Caixa.all
@@ -35,5 +36,14 @@ class ApiController < ApplicationController
     def cadastrar
         caixa = Caixa.create(tipo: params[:tipo], valor: params[:valor], status: params[:status])
         render json: caixa.to_json, status: 201
+    end
+
+
+    private
+
+    def set_cors_headers
+      headers['Access-Control-Allow-Origin'] = '*'
+      headers['Access-Control-Allow-Methods'] = 'POST, PUT, PATCH, DELETE, GET, OPTIONS'
+      headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
     end
 end
