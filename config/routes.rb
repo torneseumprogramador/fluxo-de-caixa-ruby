@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   get "api/caixas", to: "api#index"
   delete "api/caixas/:id", to: "api#excluir"
   post "api/caixas", to: "api#cadastrar"
+
+  match 'api/caixas/:id', to: 'api#options', via: :options
 end

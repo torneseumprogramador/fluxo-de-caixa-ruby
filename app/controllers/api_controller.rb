@@ -39,6 +39,10 @@ class ApiController < ApplicationController
     end
 
 
+    def options
+        render json: {}, status: 204
+    end
+
     private
 
     def set_cors_headers
