@@ -13,3 +13,68 @@
  *= require_tree .
  *= require_self
  */
+
+body{
+  margin-top: 20px;
+}
+
+.dvCaixas{
+  text-align: center;
+}
+
+.dvCaixas div{
+  text-align: left;
+  display: inline-block;
+  width: 33%;
+  background-color: #cfcfcf;
+  padding: 20px;
+  height: 110px;
+}
+
+.dvCaixas div:nth-child(3){
+  background-color: red;
+}
+
+.dvBusca, .dvTabela{
+  margin-top: 20px;
+}
+
+.dvBusca div{
+  display: inline-block;
+}
+
+.dvBusca div:nth-child(1){
+  width: 84%;
+}
+
+.dvBusca div:nth-child(1) form input{
+  display: inline-block;
+  width: 75%;
+}
+
+.dvBusca div:nth-child(1) form button{
+  display: inline-block;
+  width: 20%;
+}
+
+.dvBusca div:nth-child(2){
+  width: 15%;
+  text-align: right;
+}
+
+.dvTabela table{
+  width: 100%;
+}
+
+.dvTabela table tr{
+  border: 1px solid #cfcfcf;
+  padding: 10px;
+}
+
+.dvTabela table tr td, .dvTabela table tr th{
+  padding: 10px;
+}
+
+.dvTabela table thead{
+  background-color: #cfcfcf;
+}

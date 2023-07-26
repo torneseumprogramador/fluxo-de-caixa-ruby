@@ -1,0 +1,57 @@
+<h1>Fluxo de caixa</h1>
+
+<div class="dvCaixas">
+    <div>
+        <b>Valor Total</b><br>
+        R$ <%= number_with_precision(@valor_total, precision: 2, separator: ',', delimiter: '.') %>
+    </div>
+    <div>
+        <b>Receitas</b><br>
+        R$ <%= number_with_precision(@receita, precision: 2, separator: ',', delimiter: '.') %>
+    </div>
+    <div>
+       <b>Despesas</b><br>
+        - R$ <%= number_with_precision(@despesa, precision: 2, separator: ',', delimiter: '.') %>
+    </div>
+</div>
+
+<div class="dvBusca">
+    <div>
+        <form action="/" method="get">
+            <input type="text" class="form-control" placeholder="Digite algo" name="tipo" value="<%= params[:tipo] %>">
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </form>
+    </div>
+    <div>
+        <a href="/adicionar" class="btn btn-primary">Adicionar</a>
+    </div>
+</div>
+
+<div class="dvTabela">
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Tipo</th>
+                <th scope="col">Valor</th>
+                <th scope="col">Status</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @extrato.each do |item| %>
+            <tr>
+                <td><%= item.tipo %></td>
+                <td><%= item.status == Caixa::DEBITO ? "- " : "" %>R$ <%= number_with_precision(item.valor, precision: 2, separator: ',', delimiter: '.') %></td>
+                <% if item.status == Caixa::DEBITO %>
+                    <td style="background-color: red" >Debito</td>
+                <% else %>
+                    <td style="background-color: #75cceb" >Crédito</td>
+                <% end %>
+                <td style="width: 20px">
+                    <a href="/excluir/<%= item.id %>" class="btn btn-danger" onclick="return confirm('confirma?')">Excluir</a>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
