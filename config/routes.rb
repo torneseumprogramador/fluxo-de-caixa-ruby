@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   post "api/caixas", to: "api#cadastrar"
 
   match 'api/caixas/:id', to: 'api#options', via: :options
+  match 'api/caixas/', to: 'api#options', via: :options
 end
