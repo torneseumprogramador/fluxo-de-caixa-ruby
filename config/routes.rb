@@ -7,4 +7,8 @@ Rails.application.routes.draw do
   get "excluir/:id", to: "home#excluir"
   get "adicionar", to: "home#adicionar"
   post "adicionar", to: "home#cadastrar"
+
+  get "api/caixas", to: "api#index"
+  delete "api/caixas/:id", to: "api#excluir"
+  post "api/caixas", to: "api#cadastrar"
 end
